@@ -1,0 +1,80 @@
+/* Globale styles her */
+* {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  /* COLORS */
+
+  --prim-color-1: #ffcc4a;
+  --prim-color-2: #4eaf4e;
+  --prim-color-3: #181818;
+  --prim-color-4: #181818d1;
+  --sec-color-1: #f5f5f5;
+  --sec-color-2: #ffffff;
+
+  /* COLORS */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-xxl: 6rem;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: [full-bleed-start]1fr [content-start]minmax(0, 1000px) [content-end] 1fr [full-bleed-end];
+}
+
+header,
+footer,
+main,
+.fullbleed {
+  grid-column: full-bleed;
+  display: grid;
+  grid-template-columns: subgrid;
+  > :not(&) {
+    grid-column: content;
+  }
+}
+
+main {
+  > * + * {
+    margin-top: 5rem;
+  }
+}
+
+p {
+  line-height: 1.5;
+  font-family: "Lato", sans-serif;
+}
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-family: "Cabin", sans-serif;
+}
+
+[data-button="yellow"] {
+  --button-bg: var(--prim-color-1);
+  --button-text: var(--prim-color-3);
+}
+
+[data-button="black"] {
+  --button-bg: var(--prim-color-3);
+  --button-text: var(--sec-color-2);
+}
+
+[data-button="white"] {
+  --button-bg: var(--sec-color-2);
+  --button-text: var(--prim-color-3);
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 20px;
+  padding-inline: 5%;
+}
