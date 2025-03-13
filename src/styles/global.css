@@ -26,7 +26,7 @@
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: [full-bleed-start]1fr [content-start]minmax(0, 1000px) [content-end] 1fr [full-bleed-end];
+  grid-template-columns: [full-bleed-start]1fr [content-start]minmax(0, 500px) minmax(0, 500px) [content-end] 1fr [full-bleed-end];
 }
 
 header,
@@ -43,7 +43,7 @@ main,
 
 main {
   > * + * {
-    margin-top: 5rem;
+    margin-top: var(--space-xxl);
   }
 }
 
