@@ -1,0 +1,29 @@
+---
+const financeData = await fetch("https://frontend-design-theme.netlify.app/api/financialProjections").then((response) => response.json());
+import Scrollingcontainer from "./Scrollingcontainer.astro";
+import Button from "./Button.astro";
+---
+
+<section class="fullbleed">
+  <div class="finance_div">
+    <div>
+      <h2>{financeData.title}</h2>
+      <p>{financeData.subtitle}</p>
+    </div>
+    <div>
+      <Button variant="yellow">left</Button>
+      <Button variant="yellow">right</Button>
+    </div>
+  </div>
+  <Scrollingcontainer />
+
+  <style>
+    .finance_div {
+      display: flex;
+      align-items: end;
+      :nth-child(2) {
+        display: flex;
+      }
+    }
+  </style>
+</section>

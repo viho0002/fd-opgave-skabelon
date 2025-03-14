@@ -1,0 +1,30 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="newsletter space white-text">
+  <div>
+    <h2>Subscribe Our Newsletter</h2>
+    <p>Build Stronger Customer Relationships with Consultalk</p>
+  </div>
+  <div>
+    <input type="text" name="wow" id="" />
+    <Button variant="yellow">Subscribe</Button>
+  </div>
+</div>
+
+<style>
+  .newsletter {
+    display: flex;
+    background-color: var(--black);
+    color: var(--light-grey);
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+    padding-block: var(--space-xl);
+    padding-inline: var(--space-xxl);
+    input {
+      background-color: var(--light-grey);
+    }
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+const { variant, thick } = Astro.props;
+---
+
+<p class={thick} data-roundtext={variant}><slot /></p>
+
+<style>
+  @layer components {
+    [data-roundtext="yellow"] {
+      --roundtext-bg: var(--yellow);
+      --roundtext-text: var(--black);
+    }
+
+    [data-roundtext="black"] {
+      --roundtext-bg: var(--black);
+      --roundtext-text: var(--white);
+    }
+
+    [data-roundtext="green"] {
+      --roundtext-bg: var(--green);
+      --roundtext-text: var(--white);
+    }
+    [data-roundtext="white"] {
+      --roundtext-bg: var(--light-grey);
+      --roundtext-text: var(--black);
+    }
+
+    p {
+      background-color: var(--roundtext-bg);
+      color: var(--roundtext-text);
+      border-radius: 2rem;
+      padding-inline: 0.5rem;
+      display: inline-block;
+    }
+    .thick {
+      padding-inline: 1rem;
+      padding-block: 0.5rem;
+    }
+  }
+</style>

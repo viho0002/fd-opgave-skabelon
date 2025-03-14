@@ -1,1 +1,8 @@
 /* Override styles here */
+.flow {
+}
+
+.white-text {
+  --heading-color: var(--white);
+  --body-color: var(--white);
+}

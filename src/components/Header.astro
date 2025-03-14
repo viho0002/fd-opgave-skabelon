@@ -1,8 +1,8 @@
 ---
-
+import Button from "./Button.astro";
 ---
 
-<header>
+<header class="white-text">
   <div>
     <h2>AskExperts</h2>
     <nav>
@@ -11,22 +11,22 @@
       <a href="">Team</a>
       <a href="">About</a>
     </nav>
-    <button data-button="yellow" popovertarget="my-pop">Login</button>
+    <Button pop="my-pop" variant="yellow">Login</Button>
     <div id="my-pop" popover>
       <h2>Dashboard Login</h2>
       <p>Email adress</p>
       <input type="text" name="" id="" />
       <p>Password</p>
       <input type="text" name="" id="" />
-      <button data-button="yellow">Go to dashboard</button>
+      <Button variant="yellow">Go to Dashboard</Button>
     </div>
   </div>
 </header>
 
 <style>
   header {
-    background-color: var(--prim-color-3);
-    color: var(--sec-color-1);
+    background-color: var(--black);
+    color: var(--light-grey);
     padding-block: 20px;
 
     > div {
@@ -39,7 +39,7 @@
         gap: 1rem;
         a {
           text-decoration: none;
-          color: var(--sec-color-1);
+          color: var(--light-grey);
         }
       }
       button {
@@ -51,8 +51,8 @@
   /* POPOVER  */
   #my-pop {
     margin: auto;
-    background-color: var(--prim-color-3);
-    color: var(--sec-color-2);
+    background-color: var(--black);
+    color: var(--white);
     display: flex;
     flex-direction: column;
     padding-inline: 120px;
@@ -63,7 +63,7 @@
       place-self: start;
     }
     input {
-      background-color: var(--sec-color-2);
+      background-color: var(--white);
     }
   }
 

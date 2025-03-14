@@ -1,14 +1,16 @@
 ---
 import Services from "./Services.astro";
+import Button from "./Button.astro";
 ---
 
-<section class="hero fullbleed">
+<section class="hero fullbleed white-text">
   <!-- Markup her -->
   <div class="hero-start">
     <div>
       <h2>Empowering Your Business Growth</h2>
       <p>Discover tailored strategies and experts insights to take your business to the next leve. Let us help you navigate challenges and achieve sutainable success</p>
-      <button data-button="white">Book a meeting</button>
+
+      <Button url="/" variant="white">Book a meeting</Button>
     </div>
     <img src="test.png" alt="" />
   </div>
@@ -17,15 +19,20 @@ import Services from "./Services.astro";
 
 <style>
   section {
-    grid-template-rows: auto 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    img {
+      border-radius: 0;
+    }
     .hero-start {
-      grid-row: 1/2;
-      grid-column: full-bleed;
+      background-color: var(--black);
+      color: var(--light-grey);
       display: grid;
+      grid-row: 1/5;
       grid-template-columns: subgrid;
-      background-color: var(--prim-color-3);
-      color: var(--sec-color-1);
+      grid-column: full-bleed;
+
       div {
+        place-content: center;
         grid-column: 2/3;
       }
       img {

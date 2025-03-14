@@ -1,0 +1,23 @@
+---
+import Roundtext from "./Roundtext.astro";
+import Statscontainer from "./Statscontainer.astro";
+---
+
+<div class="Card3 fullbleed">
+  <div>
+    <Roundtext variant="white">EXPERIENCE</Roundtext>
+    <h2>WoW</h2>
+    <p>WOW</p>
+  </div>
+  <Statscontainer />
+</div>
+
+<style>
+  .Card3 {
+    padding: var(--space-xxl);
+    background-color: var(--yellow);
+    > div {
+      grid-column: content;
+    }
+  }
+</style>

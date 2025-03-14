@@ -1,14 +1,14 @@
 ---
-
+import Roundtext from "./Roundtext.astro";
 ---
 
-<div class="expect">
+<div class="expect space">
   <figure>
     <img src="test.png" alt="" />
   </figure>
 
   <div>
-    <p>WE'LL WORK WITH YOU</p>
+    <Roundtext variant="yellow">WE'LL WORK WITH YOU</Roundtext>
     <h2>What To Expect</h2>
     <p>Our collaborations is built on transparency, effieciency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
     <ul>
@@ -27,6 +27,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-lg);
+    div {
+      > * + * {
+        margin-top: var(--flow-space, 0.5rlh);
+      }
+      p {
+        --flow-space: 1rlh;
+      }
+      ul {
+        --flow-space: 2rlh;
+      }
+    }
     figure {
       position: relative;
       display: block;
@@ -36,23 +47,23 @@
         height: 250px;
         width: 250px;
         background-image: url("test2.png");
-        /* background-color: var(--prim-color-2); */
         position: absolute;
         top: -4rem;
         left: -4rem;
         z-index: -1;
         border-radius: 10px;
       }
-      &::before {
+      &::after {
         content: "";
-        height: 250px;
-        width: 250px;
-        background-color: var(--prim-color-2);
+        height: 150px;
+        width: 150px;
+        background-color: var(--green);
+
         position: absolute;
         top: -2rem;
         left: -2rem;
         z-index: -1;
-        border-radius: 10px;
+        border-radius: 1rem;
       }
     }
   }

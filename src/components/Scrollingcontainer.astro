@@ -1,0 +1,59 @@
+---
+//@ts-nocheck
+const financeData = await fetch("https://frontend-design-theme.netlify.app/api/financialProjections").then((response) => response.json());
+---
+
+<ul>
+  {
+    financeData.values.map(async (item) => {
+      const Icon = await import(`../icons/${item.icon}.svg`).then((module) => module.default);
+      return (
+        <li>
+          <Icon />
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+          <a href={item.link.url}>{item.link.text}</a>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  @layer components {
+    ul {
+      grid-column: full-bleed;
+      --content-width: 1200px;
+      display: flex;
+      overflow-x: auto;
+      gap: var(--space-lg);
+      scroll-snap-type: inline mandatory;
+      scroll-snap-stop: always;
+      list-style: none;
+      padding-inline: max(1rem, 50% - var(--content-width) / 2);
+      scroll-padding-inline-start: max(1rem, 50% - var(--content-width) / 2);
+
+      :has(> &) {
+        padding-block: var(--space-xxl);
+        gap: var(--space-xl);
+        background-color: darkgray;
+        > * {
+          grid-column: content;
+        }
+      }
+      li {
+        background-color: var(--white);
+        color: var(--black);
+        padding-block: var(--space-xl);
+        border-radius: 2rem;
+        padding-inline: 2rem;
+        flex: 1 0 min(90%, 400px);
+        scroll-snap-align: start;
+        &:is(:hover, :focus) {
+          background-color: var(--black);
+          color: var(--white);
+        }
+      }
+    }
+  }
+</style>

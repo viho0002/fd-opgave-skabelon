@@ -1,0 +1,57 @@
+<div class="stats">
+  <div class="stat" style="--percent: 35"></div>
+  <div class="stat" style="--percent: 85"></div>
+</div>
+
+<style>
+  .stats {
+    --bg-color: var(--yellow);
+    padding: 2rem;
+    display: flex;
+    gap: 1rem;
+    width: min(400px, 100% - 1rem);
+    background: var(--bg-color);
+  }
+
+  .stat {
+    --p: calc(var(--percent) * 1%);
+    --border-width: 5px;
+    --border-color: #ffffff;
+    --border-bg: var(--yellow);
+
+    aspect-ratio: 1;
+    width: 150px;
+    border-radius: calc(Infinity * 1px);
+    border: var(--border-width) solid #0000;
+    background:
+      radial-gradient(circle at 50% calc(var(--border-width) / 2), var(--border-color) calc(var(--border-width) / 2), transparent 0) border-box,
+      linear-gradient(var(--bg-color) 0 0) padding-box,
+      conic-gradient(var(--border-color) var(--p), var(--border-bg) 0) border-box;
+
+    display: grid;
+    counter-reset: count var(--percent);
+
+    &::before,
+    &::after {
+      grid-area: 1 / 1;
+    }
+
+    &::after {
+      content: counter(count) "%";
+      place-self: center;
+    }
+
+    &::before {
+      content: "";
+      aspect-ratio: 1;
+      border-radius: calc(Infinity * 1px);
+      width: calc(var(--border-width) * 3);
+      background: #000;
+      outline: 2px solid #fff;
+      outline-offset: -4px;
+      offset-path: border-box;
+      offset-distance: var(--p);
+      offset-anchor: 50% calc(50% - var(--border-width) / 2);
+    }
+  }
+</style>

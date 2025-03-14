@@ -1,0 +1,45 @@
+---
+const { url, variant, pop } = Astro.props;
+---
+
+{
+  pop ? (
+    <button popovertarget={pop} data-button={variant}>
+      <slot />
+    </button>
+  ) : (
+    <a href={url} data-button={variant}>
+      <slot />
+    </a>
+  )
+}
+
+<style>
+  @layer components {
+    [data-button="yellow"] {
+      --button-bg: var(--yellow);
+      --button-text: var(--black);
+    }
+
+    [data-button="black"] {
+      --button-bg: var(--black);
+      --button-text: var(--white);
+    }
+
+    [data-button="white"] {
+      --button-bg: var(--white);
+      --button-text: var(--black);
+    }
+
+    a,
+    button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      text-decoration: none;
+      border-radius: 2rem;
+      padding-inline: 1rem;
+      padding-block: 0.5rem;
+      display: inline-block;
+    }
+  }
+</style>
