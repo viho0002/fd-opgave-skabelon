@@ -33,13 +33,17 @@ const { url, variant, pop } = Astro.props;
 
     a,
     button {
-      background-color: var(--button-bg);
-      color: var(--button-text);
+      background-color: var(--value-btn-bg, var(--button-bg));
+      color: var(--value-btn-text, var(--button-text));
       text-decoration: none;
       border-radius: 2rem;
       padding-inline: 1rem;
       padding-block: 0.5rem;
       display: inline-block;
+      &:hover {
+        background-color: hsl(from var(--button-bg) h s calc(l - 20));
+        cursor: pointer;
+      }
     }
   }
 </style>

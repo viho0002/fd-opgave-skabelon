@@ -1,0 +1,57 @@
+---
+export async function getStaticPaths() {
+  const teamData = await fetch("https://frontend-design-theme.netlify.app/api/employees").then((response) => response.json());
+
+  return teamData.map((member) => ({
+    params: { member: member.slug }, // [artist]=artist.slug
+    props: { member }, // send al data med som props
+  }));
+}
+
+const { member } = Astro.props;
+import Layout from "../../layouts/Layout.astro";
+import Newsletter from "../../components/Newsletter.astro";
+---
+
+--- ---
+
+<Layout>
+  <div class="member-card space">
+    <img src={member.img} alt="" />
+    <article>
+      <div>
+        <div>
+          <h3>{member.name}</h3>
+          <h4>{member.title}</h4>
+        </div>
+        <ul>
+          {
+            member.social_links.map((link) => (
+              <li>
+                <a href={link.url} set:html={link.icon} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <p>{member.description_long}</p>
+      <p>{member.past_experience}</p>
+    </article>
+  </div>
+
+  <Newsletter />
+</Layout>
+
+<style>
+  .member-card {
+    display: flex;
+  }
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    svg {
+      color: var(--black);
+    }
+  }
+</style>

@@ -1,5 +1,33 @@
 /* Override styles here */
+
 .flow {
+  > * + * {
+    margin-top: var(--flow-space, 0.5rlh);
+  }
+
+  h2 {
+    --flow-space: 2rlh;
+  }
+
+  h3 {
+    --flow-space: 1rlh;
+  }
+
+  h3 + * {
+    --flow-space: 0.25rlh;
+  }
+
+  * + ul {
+    --flow-space: 2rlh;
+  }
+
+  button {
+    --flow-space: 2rlh;
+  }
+
+  section {
+    --flow-space: 2rlh;
+  }
 }
 
 .white-text {

@@ -1,0 +1,27 @@
+---
+import Roundtext from "./Roundtext.astro";
+
+const { teamData } = Astro.props;
+---
+
+{
+  teamData.map((item) => (
+    <div class="flow">
+      <div>
+        <a href={"/employees/" + item.slug}>
+          <img src={item.img} alt="" />
+        </a>
+        <Roundtext variant="black">{item.title}</Roundtext>
+      </div>
+      <h3>{item.name}</h3>
+      <p>{item.description}</p>
+      <ul>
+        {item.social_links.map((link) => (
+          <li>
+            <a href={link.url} set:html={link.icon} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))
+}

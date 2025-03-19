@@ -1,0 +1,17 @@
+---
+import heroimg from "../../assets/img/Headteam.jpg";
+const teamData = await fetch("https://frontend-design-theme.netlify.app/api/employees").then((response) => response.json());
+
+import Layout from "../../layouts/Layout.astro";
+import Newsletter from "../../components/Newsletter.astro";
+import Hero2 from "../../components/Hero2.astro";
+import Ourteam from "../../components/Ourteam.astro";
+---
+
+<Layout>
+  <Hero2 img={heroimg.src} title="Creative Services For Boost Your Business Growth" text="TEAM" />
+  <Ourteam teamData={teamData} />
+  <Newsletter />
+</Layout>
+
+<style></style>

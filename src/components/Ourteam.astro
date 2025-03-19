@@ -1,0 +1,77 @@
+---
+const { teamData } = Astro.props;
+
+import Roundtext from "./Roundtext.astro";
+
+import Teamcard from "./Teamcard.astro";
+---
+
+<div class="space">
+  <div class="team-text flow">
+    <Roundtext variant="yellow">OUR TEAM</Roundtext>
+    <h2>We champion the bold to achieve the extraordinary</h2>
+    <p>Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction, and promotes mutual respect among all team members.</p>
+  </div>
+  <div>
+    <div class="team">
+      <Teamcard teamData={teamData} />
+    </div>
+  </div>
+</div>
+<style>
+  .team-text {
+    grid-column: 2/3;
+    :has(> &) {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full-bleed;
+      gap: var(--space-xl);
+    }
+  }
+  .team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    text-align: center;
+
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+
+      list-style: none;
+      svg {
+        color: var(--black);
+      }
+    }
+    a {
+      grid-column: 1/-1;
+      grid-row: 1/-1;
+      :has(> &) {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+      }
+    }
+    a + * {
+      grid-column: 1/-1;
+      grid-row: 1/-1;
+      place-self: end;
+      margin-right: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+    > div {
+      display: grid;
+      width: 350px;
+      align-items: center;
+
+      &:hover {
+        filter: blur(0.5);
+        filter: brightness(0.5);
+      }
+    }
+    :has(> &) {
+      grid-column: content;
+    }
+  }
+</style>

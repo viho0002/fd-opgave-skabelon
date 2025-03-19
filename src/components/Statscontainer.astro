@@ -1,6 +1,10 @@
+---
+const experienceData = await fetch("https://frontend-design-theme.netlify.app/api/experience").then((response) => response.json());
+console.log(experienceData);
+---
+
 <div class="stats">
-  <div class="stat" style="--percent: 35"></div>
-  <div class="stat" style="--percent: 85"></div>
+  {experienceData.stats.map((exp) => <div class="stat" style={`--percent: ${exp.value}`} />)}
 </div>
 
 <style>
@@ -9,15 +13,14 @@
     padding: 2rem;
     display: flex;
     gap: 1rem;
-    width: min(400px, 100% - 1rem);
     background: var(--bg-color);
   }
 
   .stat {
     --p: calc(var(--percent) * 1%);
     --border-width: 5px;
-    --border-color: #ffffff;
-    --border-bg: var(--yellow);
+    --border-color: var(--white);
+    --border-bg: hsl(from var(--yellow) h s calc(l - 15));
 
     aspect-ratio: 1;
     width: 150px;
@@ -38,6 +41,7 @@
 
     &::after {
       content: counter(count) "%";
+      font-size: 2rem;
       place-self: center;
     }
 

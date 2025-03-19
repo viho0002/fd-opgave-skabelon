@@ -1,23 +1,27 @@
 ---
+const experienceData = await fetch("https://frontend-design-theme.netlify.app/api/experience").then((response) => response.json());
 import Roundtext from "./Roundtext.astro";
 import Statscontainer from "./Statscontainer.astro";
 ---
 
 <div class="Card3 fullbleed">
   <div>
-    <Roundtext variant="white">EXPERIENCE</Roundtext>
-    <h2>WoW</h2>
-    <p>WOW</p>
+    <div>
+      <Roundtext variant="white">EXPERIENCE</Roundtext>
+      <h2>{experienceData.heading}</h2>
+      <p>{experienceData.subheading}</p>
+    </div>
+    <Statscontainer />
   </div>
-  <Statscontainer />
 </div>
 
 <style>
   .Card3 {
-    padding: var(--space-xxl);
+    padding-block: var(--space-xxl);
     background-color: var(--yellow);
     > div {
       grid-column: content;
+      display: flex;
     }
   }
 </style>

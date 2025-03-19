@@ -1,0 +1,27 @@
+---
+const faqData = await fetch("https://frontend-design-theme.netlify.app/api/faq").then((response) => response.json());
+import AccordionItem from "../components/AccordionItem.astro";
+import Roundtext from "./Roundtext.astro";
+---
+
+<section class="accordion-container">
+  <Roundtext variant="green">FAQ</Roundtext>
+  <h2>Customer Questions</h2>
+  <div>
+    {faqData.faq.map((props) => <AccordionItem {...props} />)}
+  </div>
+</section>
+
+<style>
+  section {
+    padding-block: 3rem;
+    background: #f5f5f5;
+    text-align: center;
+  }
+  div {
+    text-align: left;
+    padding: 1rlh;
+    max-width: 725px;
+    margin-inline: auto;
+  }
+</style>

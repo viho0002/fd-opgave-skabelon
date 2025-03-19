@@ -1,0 +1,47 @@
+---
+const valuesData = await fetch("https://frontend-design-theme.netlify.app/api/coreValues").then((response) => response.json());
+import Button from "./Button.astro";
+import Valuecard from "./Valuecard.astro";
+import Roundtext from "./Roundtext.astro";
+
+const { variant } = Astro.props;
+---
+
+<div data-theme={variant} class="values-container fullbleed">
+  <div>
+    <Roundtext variant="yellow">GROWING WITH OUR CLIENTS</Roundtext>
+    <div class="value-card long_text_div flow">
+      <div class="flow">
+        <h2>{valuesData.title}</h2>
+        <p>{valuesData.subtitle}</p>
+      </div>
+      <Button url={valuesData.button.link} variant="white">{valuesData.button.text}</Button>
+    </div>
+    <div>
+      <Valuecard />
+    </div>
+  </div>
+</div>
+<style>
+  @layer components {
+    .values-container {
+      padding-block: var(--space-xxl);
+      background: var(--value-bg-section, var(--grey));
+    }
+
+    .value-card {
+      margin-bottom: var(--space-xl);
+      h2 {
+        color: var(--value-heading-section, var(--black));
+      }
+      p {
+        color: var(--value-body-section, var(--black));
+      }
+    }
+    [data-theme="dark"] {
+      --value-bg-section: var(--black);
+      --value-heading-section: var(--white);
+      --value-body-section: var(--white);
+    }
+  }
+</style>

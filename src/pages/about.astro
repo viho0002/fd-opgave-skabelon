@@ -1,0 +1,26 @@
+---
+import heroimg from "../assets/img/Headabout.jpg";
+
+import Layout from "../layouts/Layout.astro";
+import Newsletter from "../components/Newsletter.astro";
+import Hero2 from "../components/Hero2.astro";
+import Ideas from "../components/Ideas.astro";
+import Values from "../components/Values.astro";
+import Ourteam from "../components/Ourteam.astro";
+import Customer from "../components/Customer.astro";
+
+const teamData = await fetch("https://frontend-design-theme.netlify.app/api/employees").then((response) => response.json());
+
+const teamDataThreeMembers = teamData.slice(0, 3);
+---
+
+<Layout>
+  <Hero2 img={heroimg.src} title="Creative Services For Boost Your Business Growth" text="SERVICES" />
+  <Ideas />
+  <Values />
+  <Ourteam teamData={teamDataThreeMembers} />
+  <Customer />
+  <Newsletter />
+</Layout>
+
+<style></style>

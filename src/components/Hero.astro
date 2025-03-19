@@ -6,10 +6,9 @@ import Button from "./Button.astro";
 <section class="hero fullbleed white-text">
   <!-- Markup her -->
   <div class="hero-start">
-    <div>
+    <div class="flow">
       <h2>Empowering Your Business Growth</h2>
       <p>Discover tailored strategies and experts insights to take your business to the next leve. Let us help you navigate challenges and achieve sutainable success</p>
-
       <Button url="/" variant="white">Book a meeting</Button>
     </div>
     <img src="test.png" alt="" />
@@ -32,6 +31,7 @@ import Button from "./Button.astro";
       grid-column: full-bleed;
 
       div {
+        padding-inline-end: var(--space-xl);
         place-content: center;
         grid-column: 2/3;
       }

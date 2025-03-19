@@ -8,11 +8,10 @@ const financeData = await fetch("https://frontend-design-theme.netlify.app/api/f
     financeData.values.map(async (item) => {
       const Icon = await import(`../icons/${item.icon}.svg`).then((module) => module.default);
       return (
-        <li>
+        <li class="flow">
           <Icon />
-          <h2>{item.title}</h2>
+          <h3>{item.title}</h3>
           <p>{item.description}</p>
-          <a href={item.link.url}>{item.link.text}</a>
         </li>
       );
     })
@@ -36,22 +35,21 @@ const financeData = await fetch("https://frontend-design-theme.netlify.app/api/f
       :has(> &) {
         padding-block: var(--space-xxl);
         gap: var(--space-xl);
-        background-color: darkgray;
-        > * {
-          grid-column: content;
-        }
+        background-color: var(--grey);
       }
       li {
-        background-color: var(--white);
+        background-color: var(--light-grey);
         color: var(--black);
         padding-block: var(--space-xl);
-        border-radius: 2rem;
-        padding-inline: 2rem;
+        border-radius: var(--space-lg);
+        padding-inline: var(--space-lg);
         flex: 1 0 min(90%, 400px);
         scroll-snap-align: start;
         &:is(:hover, :focus) {
           background-color: var(--black);
-          color: var(--white);
+          color: var(--yellow);
+          --heading-color: var(--white);
+          --body-color: var(--white);
         }
       }
     }

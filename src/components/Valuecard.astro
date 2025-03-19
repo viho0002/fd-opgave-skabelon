@@ -1,0 +1,52 @@
+---
+const valuesData = await fetch("https://frontend-design-theme.netlify.app/api/coreValues").then((response) => response.json());
+---
+
+{
+  valuesData.values.map(async (item) => {
+    const Icon = await import(`../icons/${item.icon}.svg`).then((module) => module.default);
+    return (
+      <div class="card flow">
+        <Icon />
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+        <a href={item.link.url}>{item.link.text}</a>
+      </div>
+    );
+  })
+}
+
+<style>
+  .card {
+    background: var(--value-bg-card, var(--white));
+    color: var(--value-text-card, var(--black));
+    padding-block: var(--space-xl);
+    border-radius: var(--space-lg);
+    padding-inline: var(--space-lg);
+    a {
+      color: var(--value-text-card, var(--black));
+      text-decoration: none;
+      font-weight: bold;
+    }
+    svg {
+      background-color: var(--value-text-card, var(--black));
+      color: var(--value-bg-card, var(--white));
+      border-radius: 999px;
+      width: var(--space-xl);
+      height: var(--space-xl);
+      padding: 2%;
+    }
+    :has(> &) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: var(--space-sm);
+    }
+
+    [data-theme="dark"] {
+      --value-bg-section: var(--black);
+      --value-heading-section: var(--white);
+      --value-body-section: var(--white);
+    }
+  }
+</style>
