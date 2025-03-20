@@ -9,32 +9,34 @@ export async function getStaticPaths() {
 }
 
 const { member } = Astro.props;
+
 import Layout from "../../layouts/Layout.astro";
 import Newsletter from "../../components/Newsletter.astro";
 ---
-
---- ---
 
 <Layout>
   <div class="member-card space">
     <img src={member.img} alt="" />
     <article>
-      <div>
-        <div>
+      <div class="member-card-title flow">
+        <div class="title flow">
           <h3>{member.name}</h3>
           <h4>{member.title}</h4>
         </div>
-        <ul>
-          {
-            member.social_links.map((link) => (
-              <li>
-                <a href={link.url} set:html={link.icon} />
-              </li>
-            ))
-          }
-        </ul>
+        <div>
+          <ul>
+            {
+              member.social_links.map((link) => (
+                <li>
+                  <a href={link.url} set:html={link.icon} />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
       <p>{member.description_long}</p>
+      <h3>Past experience</h3>
       <p>{member.past_experience}</p>
     </article>
   </div>
@@ -43,15 +45,44 @@ import Newsletter from "../../components/Newsletter.astro";
 </Layout>
 
 <style>
-  .member-card {
-    display: flex;
-  }
-  ul {
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    svg {
-      color: var(--black);
+  @layer components {
+    .member-card {
+      container: member / inline-size;
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      gap: var(--space-xxl);
+      @container member (width < 700px) {
+        & {
+          > * + * {
+            margin-inline: var(--space-sm);
+          }
+          > * {
+            grid-column: 1/-1;
+          }
+        }
+      }
+    }
+    article {
+      > div {
+        display: flex;
+        place-items: start;
+        .title {
+          margin-right: auto;
+        }
+        ul {
+          display: flex;
+          justify-content: space-evenly;
+          gap: var(--space-xl);
+          list-style: none;
+          svg {
+            color: var(--black);
+          }
+        }
+      }
+    }
+
+    p {
+      margin-block: var(--space-sm);
     }
   }
 </style>

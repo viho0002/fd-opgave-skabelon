@@ -4,58 +4,81 @@ console.log(experienceData);
 ---
 
 <div class="stats">
-  {experienceData.stats.map((exp) => <div class="stat" style={`--percent: ${exp.value}`} />)}
+  {
+    experienceData.stats.map((exp) => (
+      <div>
+        <div class="stat" style={`--percent: ${exp.value}`} />
+        <p>{exp.label}</p>
+      </div>
+    ))
+  }
 </div>
 
 <style>
-  .stats {
-    --bg-color: var(--yellow);
-    padding: 2rem;
-    display: flex;
-    gap: 1rem;
-    background: var(--bg-color);
-  }
-
-  .stat {
-    --p: calc(var(--percent) * 1%);
-    --border-width: 5px;
-    --border-color: var(--white);
-    --border-bg: hsl(from var(--yellow) h s calc(l - 15));
-
-    aspect-ratio: 1;
-    width: 150px;
-    border-radius: calc(Infinity * 1px);
-    border: var(--border-width) solid #0000;
-    background:
-      radial-gradient(circle at 50% calc(var(--border-width) / 2), var(--border-color) calc(var(--border-width) / 2), transparent 0) border-box,
-      linear-gradient(var(--bg-color) 0 0) padding-box,
-      conic-gradient(var(--border-color) var(--p), var(--border-bg) 0) border-box;
-
-    display: grid;
-    counter-reset: count var(--percent);
-
-    &::before,
-    &::after {
-      grid-area: 1 / 1;
+  @layer components {
+    .stats {
+      --bg-color: var(--yellow);
+      padding: 2rem;
+      display: flex;
+      gap: 1rem;
+      background: var(--bg-color);
+      flex-wrap: wrap;
     }
 
-    &::after {
-      content: counter(count) "%";
-      font-size: 2rem;
-      place-self: center;
-    }
+    .stat {
+      display: flex;
+      place-content: center;
+      place-items: center;
+      align-items: center;
+      --p: calc(var(--percent) * 1%);
+      --border-width: 5px;
+      --border-color: var(--white);
+      --border-bg: hsl(from var(--yellow) h s calc(l - 15));
 
-    &::before {
-      content: "";
       aspect-ratio: 1;
+      min-width: 150px;
       border-radius: calc(Infinity * 1px);
-      width: calc(var(--border-width) * 3);
-      background: #000;
-      outline: 2px solid #fff;
-      outline-offset: -4px;
-      offset-path: border-box;
-      offset-distance: var(--p);
-      offset-anchor: 50% calc(50% - var(--border-width) / 2);
+      border: var(--border-width) solid #0000;
+      background:
+        radial-gradient(circle at 50% calc(var(--border-width) / 2), var(--border-color) calc(var(--border-width) / 2), transparent 0) border-box,
+        linear-gradient(var(--bg-color) 0 0) padding-box,
+        conic-gradient(var(--border-color) var(--p), var(--border-bg) 0) border-box;
+
+      display: grid;
+      counter-reset: count var(--percent);
+
+      &::before,
+      &::after {
+        grid-area: 1 / 1;
+      }
+
+      &::after {
+        content: counter(count) "%";
+        font-size: 2rem;
+        place-self: center;
+      }
+
+      &::before {
+        content: "";
+        aspect-ratio: 1;
+        border-radius: calc(Infinity * 1px);
+        width: calc(var(--border-width) * 3);
+        background: var(--white);
+        outline: 2px solid #fff;
+        outline-offset: -4px;
+        offset-path: border-box;
+        offset-distance: var(--p);
+        offset-anchor: 50% calc(50% - var(--border-width) / 2);
+      }
+    }
+    p {
+      text-align: center;
+    }
+
+    @media (width < 500) {
+      .stat {
+        width: 100px;
+      }
     }
   }
 </style>

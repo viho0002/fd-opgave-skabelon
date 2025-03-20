@@ -25,15 +25,18 @@ import Button from "./Button.astro";
     display: flex;
     gap: 1rem;
     padding: 0;
+    @media (width < 700px) {
+      & {
+        flex-direction: column;
+      }
+    }
 
     li {
       background-color: hsl(from var(--black) h s l / 0.9);
       border-radius: 10px;
       border: 1px solid var(--light-grey);
       color: var(--white);
-      padding: 40px;
-    }
-    a {
+      padding: var(--step-3);
     }
   }
 </style>

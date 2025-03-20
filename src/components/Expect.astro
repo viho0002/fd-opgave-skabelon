@@ -4,7 +4,7 @@ import Roundtext from "./Roundtext.astro";
 
 <div class="expect space">
   <figure>
-    <img src="test.png" alt="" />
+    <img src="Expect.jpg" alt="" />
   </figure>
 
   <div class="flow">
@@ -24,9 +24,17 @@ import Roundtext from "./Roundtext.astro";
   }
 
   .expect {
+    container: expect / inline-size;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-lg);
+    @container expect (width < 700px) {
+      & {
+        > * {
+          grid-column: 1/-1;
+        }
+      }
+    }
 
     figure {
       position: relative;

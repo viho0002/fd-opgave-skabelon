@@ -27,11 +27,15 @@ import Teamcard from "./Teamcard.astro";
       grid-column: full-bleed;
       gap: var(--space-xl);
     }
+
+    @media (width < 1000px) {
+      grid-column: 2/4;
+    }
   }
   .team {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: var(--space-xl);
     text-align: center;
 
@@ -42,6 +46,9 @@ import Teamcard from "./Teamcard.astro";
       list-style: none;
       svg {
         color: var(--black);
+        &:hover {
+          color: var(--yellow);
+        }
       }
     }
     a {
@@ -64,10 +71,10 @@ import Teamcard from "./Teamcard.astro";
       display: grid;
       width: 350px;
       align-items: center;
-
-      &:hover {
-        filter: blur(0.5);
-        filter: brightness(0.5);
+      > div {
+        &:hover {
+          filter: brightness(0.5);
+        }
       }
     }
     :has(> &) {

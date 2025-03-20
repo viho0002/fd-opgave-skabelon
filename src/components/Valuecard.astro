@@ -37,10 +37,21 @@ const valuesData = await fetch("https://frontend-design-theme.netlify.app/api/co
       padding: 2%;
     }
     :has(> &) {
+      container: bob / inline-size;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-
       gap: var(--space-sm);
+    }
+
+    @container bob (width < 1000px) {
+      & {
+        grid-column: span 2;
+      }
+    }
+    @container bob (width < 500px) {
+      & {
+        grid-column: span 4;
+      }
     }
 
     [data-theme="dark"] {

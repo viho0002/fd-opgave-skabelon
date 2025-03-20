@@ -5,16 +5,16 @@ import Roundtext from "./Roundtext.astro";
 <div class="space">
   <div class="ideas">
     <div>
-      <Roundtext variant="yellow">WE'LL WORK WITH YOU</Roundtext>
-      <h2>What To Expect</h2>
-      <p>Our collaborations is built on transparency, effieciency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+      <Roundtext variant="yellow">OUR VISION</Roundtext>
+      <h2>Turn your ideas into reality.</h2>
+      <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
       <ul>
         <li>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
         <li>Identify opportunities to optimize processes and implement impactfull solutions with measurable results.</li>
       </ul>
     </div>
     <figure>
-      <img src="test.png" alt="" />
+      <img src="Ideas.jpg" alt="" />
     </figure>
   </div>
   <div class="ideas-bottom">
@@ -43,9 +43,18 @@ import Roundtext from "./Roundtext.astro";
   }
 
   .ideas {
+    container: idea / inline-size;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-lg);
+    @container idea (width < 700px) {
+      & {
+        > * {
+          grid-column: 1/-1;
+        }
+      }
+    }
+
     div {
       > * + * {
         margin-top: var(--flow-space, 0.5rlh);
@@ -60,6 +69,16 @@ import Roundtext from "./Roundtext.astro";
     figure {
       position: relative;
       display: block;
+
+      @media (width < 1200px) {
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          display: none;
+        }
+      }
 
       &::before {
         content: "";

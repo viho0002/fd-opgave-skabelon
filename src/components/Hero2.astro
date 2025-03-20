@@ -24,6 +24,10 @@ const { img, title, text } = Astro.props;
       padding-block: var(--space-xl);
       background-color: hsl(from var(--white) h s l / 0.8);
       border-radius: var(--space-md);
+
+      @media (width < 700px) {
+        width: 100%;
+      }
     }
   }
 </style>

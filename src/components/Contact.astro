@@ -51,9 +51,32 @@ import Pin from "../icons/pin.svg";
 
 <style>
   .contact-grid {
+    container: contact / inline-size;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: var(--space-md);
+    @container contact (width < 1200px) {
+      & {
+        > div {
+          > * + * {
+            margin-top: var(--space-xl);
+          }
+        }
+        .card-list {
+          height: auto;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        .bento {
+          grid-column: 1/-1;
+          margin-top: var(--space-xxl);
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
   }
   .card-list {
     display: flex;
@@ -71,6 +94,7 @@ import Pin from "../icons/pin.svg";
 
   .icon-holder {
     display: flex;
+    gap: var(--space-md);
   }
   .phone {
     color: var(--green);
@@ -97,7 +121,6 @@ import Pin from "../icons/pin.svg";
       "a b"
       "a c";
     gap: var(--space-md);
-
     position: relative;
 
     &::before {

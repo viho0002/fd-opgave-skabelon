@@ -37,9 +37,13 @@ import Button from "./Button.astro";
       nav {
         display: flex;
         gap: 1rem;
+        flex-wrap: wrap;
         a {
           text-decoration: none;
           color: var(--light-grey);
+          &:hover {
+            color: var(--yellow);
+          }
         }
       }
       button {

@@ -19,9 +19,12 @@ import Statscontainer from "./Statscontainer.astro";
   .Card3 {
     padding-block: var(--space-xxl);
     background-color: var(--yellow);
+
     > div {
+      justify-content: space-between;
       grid-column: content;
       display: flex;
+      flex-wrap: wrap;
     }
   }
 </style>

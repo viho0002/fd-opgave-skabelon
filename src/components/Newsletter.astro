@@ -4,7 +4,7 @@ import Button from "./Button.astro";
 
 <div class="newsletter space white-text">
   <div>
-    <h2>Subscribe Our Newsletter</h2>
+    <h3>Subscribe Our Newsletter</h3>
     <p>Build Stronger Customer Relationships with Consultalk</p>
   </div>
   <div>
@@ -15,16 +15,30 @@ import Button from "./Button.astro";
 
 <style>
   .newsletter {
+    container: newsletter / inline-size;
     display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--space-lg);
     background-color: var(--black);
     color: var(--light-grey);
     justify-content: space-between;
     align-items: center;
+    place-items: center;
     border-radius: 1rem;
     padding-block: var(--space-xl);
     padding-inline: var(--space-xxl);
+    @container newsletter (width < 700px) {
+      > div {
+        margin-inline: auto;
+        padding-inline: 1rem;
+      }
+    }
+
     input {
       background-color: var(--light-grey);
+      border-radius: 99px;
+      padding-inline: var(--space-md);
+      padding-block: var(--space-xs);
     }
   }
 </style>
